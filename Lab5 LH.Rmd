@@ -41,12 +41,36 @@ sum = accident %>% group_by(DRUNK_DR) %>% summarize (n = n())
 sum(sum$n[c(2:4)])
 ```
 
-
 ```{r}
+joint = inner_join(person, accident, by = "ST_CASE")
+
+person1 = joint %>% filter(PER_TYP == 1)
 ```
 
 ```{r}
+sum.day = person1 %>% group_by(DAY_WEEK) %>% summarize(n = n())
+
+sum.hour = person1 %>% group_by(HOUR.y) %>% summarize(n = n())
+
+sum.gender = person1 %>% group_by(SEX) %>% summarize(n = n())
+
+sum.overall = person1 %>% group_by(DAY_WEEK, HOUR.y,SEX) %>% summarize(n = n())
 ```
 
 ```{r}
+sum.day %>% ggplot(aes(x = DAY_WEEK, y = n)) + geom_col()
 ```
+
+
+```{r}
+sum.hour %>% filter(HOUR.y < 25) %>% ggplot(aes(x = HOUR.y, y = n)) + geom_col()
+```
+
+```{r}
+sum.gender %>% ggplot(aes(x = SEX, y = n, fill = as.factor(SEX))) + geom_col() + ylab("COUNT") 
+```
+```{r}
+sum.overall %>% ggplot(aes(x = DAY_WEEK,y = n, fill = as.factor(HOUR.y))) + geom_col() + facet_wrap(~SEX)
+```
+
+
