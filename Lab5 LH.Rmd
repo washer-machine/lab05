@@ -11,4 +11,42 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Lynn's version of Lab 
 ```{r}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+
+accident = read.csv("accident.csv")
+person = read.csv("person.csv")
+vehicle = read.csv("vehicle.csv")
+```
+
+```{r}
+names(accident)
+```
+
+```{r}
+accident %>% ggplot(aes(x = DAY_WEEK)) + geom_bar() + xlab ("DAY")
+```
+
+```{r}
+accident %>% filter(HOUR <= 24) %>% ggplot(aes(x = HOUR)) + geom_bar() 
+```
+
+
+```{r}
+accident %>% filter(HOUR <= 24) %>% ggplot(aes(x = DRUNK_DR)) + geom_bar() 
+
+sum = accident %>% group_by(DRUNK_DR) %>% summarize (n = n())
+#number of accidents with 1 or more drunk drivers involved
+sum(sum$n[c(2:4)])
+```
+
+
+```{r}
+```
+
+```{r}
+```
+
+```{r}
 ```
