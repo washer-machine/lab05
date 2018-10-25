@@ -71,5 +71,5 @@ sum.gender %>% ggplot(aes(x = SEX, y = n, fill = as.factor(SEX))) + geom_col() +
 ```
 
 ```{r}
-sum.overall %>% ggplot(aes(x = DAY_WEEK,y = n, fill = as.factor(HOUR.y))) + geom_col() + facet_wrap(~SEX)
+sum.overall %>% filter (SEX < 3, HOUR.y < 25) %>% ggplot(aes(x = DAY_WEEK,y = n, fill = as.factor(HOUR.y))) + geom_col() + facet_wrap(~SEX) + xlab ("Day") + ylab("Count") 
 ```
