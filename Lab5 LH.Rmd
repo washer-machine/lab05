@@ -1,0 +1,14 @@
+---
+title: "lab5-LH"
+author: "Lynn Huang"
+date: "October 25, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Lynn's version of Lab 
+```{r}
+```
