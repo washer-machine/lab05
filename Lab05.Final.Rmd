@@ -1,0 +1,20 @@
+---
+title: "Lab5.Final"
+author: "Lynn Huang, Prateek Oberoi, Aisha Washington"
+date: "October 25, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+
+accident = read.csv("accident.csv")
+person = read.csv("person.csv")
+vehicle = read.csv("vehicle.csv")
+```
