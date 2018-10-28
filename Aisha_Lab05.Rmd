@@ -1,0 +1,66 @@
+---
+title: "Aisha_Lab05"
+author: "Aisha"
+date: "October 25, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(lubridate)
+```
+
+## Part One: Accident Data
+```{r}
+accident <- read.csv('accident.csv')
+head(accident)
+
+# Day of Week Hist (1 = Sunday)
+accident %>% ggplot(aes(x = DAY_WEEK)) +
+  geom_bar()
+
+#Hour of Day Hist
+accident %>% filter(HOUR <= 24) %>% 
+  ggplot(aes(x = HOUR)) +
+  geom_bar()
+
+#Accidents Involving Drunk Drivers
+accident %>% filter(DRUNK_DR > 0) %>% 
+  #group_by(DRUNK_DR) %>%
+  summarise(n())
+```
+
+More accidents occur on the weekend (Fri, Sat, Sun)
+Fewer accidents occur in the morning hours
+8720 accidents involved at least one drug driver
+
+## Part Two: Connecting Data
+```{r}
+person <- read.csv('person.csv')
+head(person)
+
+person <- person %>% filter(PER_TYP == 1)
+
+merge1 <- left_join(accident, person, by = c('STATE', 'ST_CASE'))
+
+%>% filter(STATE.x == STATE.y)
+# anti <- anti_join(accident, person, key = c(ST_CASE, STATE))
+
+# Tally and Visualize DAY_WEEK, HOUR, SEX
+merge1 %>% group_by() %>% summarise() %>% ggplot(aes(n))
+```
+
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
