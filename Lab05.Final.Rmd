@@ -3,6 +3,7 @@ title: "Lab5.Final"
 author: "Lynn Huang, Prateek Oberoi, Aisha Washington"
 date: "October 25, 2018"
 output: html_document
+repo: https://github.com/washer-machine/lab05
 ---
 
 ```{r setup, include=FALSE}
