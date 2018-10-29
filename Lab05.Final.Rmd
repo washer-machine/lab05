@@ -77,6 +77,8 @@ sum.hour %>% filter(HOUR.y < 25) %>% ggplot(aes(x = HOUR.y, y = n)) + geom_col()
 sum.gender %>% ggplot(aes(x = SEX, y = n, fill = as.factor(SEX))) + geom_col() + ylab("COUNT") 
 ```
 
+The following plot isn't one asked for in the lab - we thought the final prompt might have been asking us to plot one single graph which includes the factors of day of the week, hour of the day, and sex. After realizing that we were just being asked for separate plots, we wanted to see if we could achieve this anyway. This is the closest we got: 
 ```{r}
 sum.overall %>% filter (SEX < 3, HOUR.y < 25) %>% ggplot(aes(x = DAY_WEEK,y = n, fill = as.factor(HOUR.y))) + geom_col() + facet_wrap(~SEX) + xlab ("Day") + ylab("Count") 
 ```
+The total bars are the sum for each day in the week, each bar is split into hour of the day, and we faceted it by sex so we could see the gender differences too. It's pretty nifty
